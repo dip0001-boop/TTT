@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="theme-color" content="#070707" />
+  <meta
+    name="description"
+    content="Tung Tung — search the web without the noise."
+  />
+
+  <title>Tung Tung — Search</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <div class="ambient ambient-purple"></div>
+  <div class="ambient ambient-green"></div>
+  <div class="grain"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="Tung Tung Search">
+      <span class="brand-icon">TT</span>
+      <span class="brand-name">tung tung</span>
+    </a>
+
+    <div class="header-actions">
+      <button
+        id="safeBtn"
+        class="safe-toggle active"
+        type="button"
+        title="Toggle Safe Search"
+      >
+        <span class="safe-symbol">✦</span>
+        <span class="safe-label">Safe Search</span>
+        <span class="safe-dot"></span>
+      </button>
+
+      <button
+        id="themeBtn"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle theme"
+        title="Toggle theme"
+      >
+        ☼
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="home">
+      <div class="hero">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          THE OPEN WEB, BEAUTIFULLY SEARCHED
+        </div>
+
+        <div class="hero-logo">
+          <span>TT</span>
+        </div>
+
+        <h1 class="hero-title">
+          Tung Tung<span>.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Search the web without the noise.
+        </p>
+
+        <!-- HOME SEARCH -->
+        <form id="homeForm" class="search-box" autocomplete="off">
+          <span class="search-icon"></span>
+
+          <input
+            id="homeInput"
+            type="text"
+            placeholder="Search anything..."
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search the web"
+          />
+
+          <button
+            id="homeClear"
+            class="clear-button"
+            type="button"
+            aria-label="Clear search"
+          >
+            ×
+          </button>
+
+          <button
+            class="search-button"
+            type="submit"
+            aria-label="Search"
+          >
+            <span>→</span>
+          </button>
+
+          <div id="homeSuggestions" class="suggestions"></div>
+        </form>
+
+        <!-- QUICK SEARCHES -->
+        <div class="quick-searches">
+          <button type="button" data-q="Artificial intelligence">
+            <span>AI</span>
+          </button>
+
+          <button type="button" data-q="latest technology news">
+            <span>Technology</span>
+          </button>
+
+          <button type="button" data-q="Wikipedia">
+            <span>Wikipedia</span>
+          </button>
+
+          <button type="button" data-q="space exploration">
+            <span>Space</span>
+          </button>
+        </div>
+
+        <div class="privacy-note">
+          <span>⌁</span>
+          Searches aren't saved by Tung Tung.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH RESULTS -->
+    <section id="searchView" class="search-view" hidden>
+      <!-- RESULTS HEADER -->
+      <div class="results-header">
+        <a href="/" class="results-brand" aria-label="Tung Tung home">
+          <span class="brand-icon">TT</span>
+          <span>tung tung</span>
+        </a>
+
+        <form
+          id="resultsForm"
+          class="search-box results-search"
+          autocomplete="off"
+        >
+          <span class="search-icon"></span>
+
+          <input
+            id="resultsInput"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search"
+          />
+
+          <button
+            class="search-button"
+            type="submit"
+            aria-label="Search"
+          >
+            <span>→</span>
+          </button>
+
+          <div id="resultsSuggestions" class="suggestions"></div>
+        </form>
+
+        <button
+          id="compactSafe"
+          class="compact-safe"
+          type="button"
+        >
+          ✦ Safe
+        </button>
+      </div>
+
+      <!-- SEARCH TABS -->
+      <nav class="search-tabs" aria-label="Search categories">
+        <button
+          class="search-tab active"
+          data-type="web"
+          type="button"
+        >
+          <span class="tab-icon">⌕</span>
+          Web
+        </button>
+
+        <button
+          class="search-tab"
+          data-type="images"
+          type="button"
+        >
+          <span class="tab-icon">▧</span>
+          Images
+        </button>
+
+        <button
+          class="search-tab"
+          data-type="news"
+          type="button"
+        >
+          <span class="tab-icon">◉</span>
+          News
+        </button>
+
+        <button
+          class="search-tab"
+          data-type="videos"
+          type="button"
+        >
+          <span class="tab-icon">▶</span>
+          Videos
+        </button>
+
+        <button
+          class="search-tab"
+          data-type="wiki"
+          type="button"
+        >
+          <span class="tab-icon">W</span>
+          Knowledge
+        </button>
+      </nav>
+
+      <!-- RESULTS CONTENT -->
+      <div class="results-layout">
+        <section class="results-main">
+          <div class="results-toolbar">
+            <span id="resultMeta">WEB RESULTS</span>
+
+            <span class="live-indicator">
+              <i></i>
+              LIVE WEB
+            </span>
+          </div>
+
+          <div id="results"></div>
+
+          <div id="pagination" class="pagination"></div>
+        </section>
+
+        <aside id="knowledge" class="knowledge-panel"></aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>tung tung</span>
+    <span class="footer-separator">•</span>
+    <span>privacy first</span>
+    <span class="footer-separator">•</span>
+    <span>no search history</span>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
