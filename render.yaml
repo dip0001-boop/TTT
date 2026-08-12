@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: tung-tung-search
+    runtime: node
+
+    buildCommand: npm install
+    startCommand: npm start
+
+    autoDeploy: true
